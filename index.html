@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Harold Laurio | Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <button class="dark-toggle" onclick="toggleDarkMode()">🌗</button>
+  <header>
+    <h1>Harold Laurio</h1>
+    <p><span id="typed-text">Web Developer</span></p>
+  </header>
+
+  <div class="container">
+
+    <section id="about">
+      <img src="DSC09784.jpg" alt="Harold Laurio" />
+      <div>
+        <h2>About Me</h2>
+        <p>Hello! I’m Harold, Information Technology student and future developer. I enjoy building clean, fast, and user-friendly websites. Always exploring and learning!</p>
+      </div>
+    </section>
+    
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skill">
+        <label>HTML</label>
+        <div class="skill-bar"><div class="skill-level" style="width: 90%;"></div></div>
+      </div>
+      <div class="skill">
+        <label>CSS</label>
+        <div class="skill-bar"><div class="skill-level" style="width: 85%;"></div></div>
+      </div>
+      <div class="skill">
+        <label>JavaScript</label>
+        <div class="skill-bar"><div class="skill-level" style="width: 65%;"></div></div>
+      </div>
+      <div class="skill">
+        <label>React</label>
+        <div class="skill-bar"><div class="skill-level" style="width: 60%;"></div></div>
+      </div>
+    </section>
+    
+    <div class="project"></div>
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="filters">
+        <button onclick="filterProjects('all')">All</button>
+        <button onclick="filterProjects('web')">Web</button>
+        <button onclick="filterProjects('app')">App</button>
+      </div>
+
+      <div class="project-card" data-category="web">
+        <h3>Portfolio Website</h3>
+        <p>A responsive and animated portfolio made with HTML, CSS, and JS.</p>
+      </div>
+
+      <div class="project-card" data-category="app">
+        <h3>Todo App</h3>
+        <p>A simple JavaScript todo list that stores your tasks in localStorage.</p>
+      </div>
+
+      <div class="project-card" data-category="web">
+        <h3>Calculator</h3>
+        <p>A web-based calculator using basic JavaScript logic and styling.</p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Me</h2>
+      <form id="contactForm">
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <textarea placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+
+    <div class="social-links" style="text-align:center; margin: 2rem 0;">
+      <a href="https://github.com/yourusername" target="_blank" aria-label="GitHub" style="margin: 0 10px; font-size: 1.5rem; color: var(--accent-color);">🐙</a>
+      <a href="https://linkedin.com/in/yourusername" target="_blank" aria-label="LinkedIn" style="margin: 0 10px; font-size: 1.5rem; color: var(--accent-color);">🔗</a>
+      <a href="https://twitter.com/yourusername" target="_blank" aria-label="Twitter" style="margin: 0 10px; font-size: 1.5rem; color: var(--accent-color);">🐦</a>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Harold Laurio. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark");
+    }
+
+    document.getElementById("contactForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      alert("Thank you for contacting me!");
+    });
+
+    const typedText = document.getElementById("typed-text");
+    const words = ["Future Web Developer", "BSIT Student", "INFORMATION TECHNOLOGY"];
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function type() {
+      let word = words[wordIndex]; typedText.textContent = word.substring(0, charIndex)
+
+      if (!isDeleting && charIndex < word.length) {
+        charIndex++;
+        setTimeout(type, 150);
+      } else if (isDeleting && charIndex > 0) {
+        charIndex--;
+        setTimeout(type, 150);
+      } else {
+        isDeleting = !isDeleting;
+        if (!isDeleting) wordIndex = (wordIndex + 1) % words.length;
+        setTimeout(type, 1000);
+      }
+    }
+    type();
+  
+    function filterProjects(category) {
+      const projects = document.querySelectorAll(".project-card");
+      projects.forEach(p => {
+        if (category === "all" ||p.dataset.category === category) {
+          p.classList.remove("hidden");
+        } else {
+          p.classList.add("hidden");
+        }
+      });
+    }
+  </script>
+  
+</body>
+</html>

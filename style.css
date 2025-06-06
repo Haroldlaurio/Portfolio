@@ -1,0 +1,246 @@
+:root {
+  --primary-color: #0077cc;
+  --accent-color: #00c2a8;
+  --background-color: #f0f9ff;
+  --text-color: #333;
+  --card-bg: #ffffff;
+  --dark-bg: #1e1e2f;
+  --dark-text: #f4f4f4;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background 0.4s, color 0.4s;
+}
+
+header {
+  background: linear-gradient(135deg, #0077cc, #00c2a8);
+  color: white;
+  text-align: center;
+  padding: 3rem 1rem;
+  animation: fadeInDown 1s ease;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  font-style: oblique
+}
+
+header p span {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid #fff;
+  animation: typing 2s steps(22) forwards, blink 0.75s step-end infinite;
+  font-style: oblique
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 22ch } 
+}
+
+@keyframes blink {
+  0%, 100% { border-color: transparent; }
+  50% { border-color: #fff; }
+}
+
+
+#skills {
+  margin-bottom: 3rem;
+  animation: fadeInUp 1s ease;
+  
+}
+
+.skill {
+  margin-bottom: 1rem;
+}
+
+.skill label {
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+  display: block;
+}
+
+.skill-bar {
+  background-color: #ddd;
+  border-radius: 20px;
+  overflow: hidden;
+  height: 15px;
+  width: 100%;
+}
+
+.skill-level {
+  background-color: var(--accent-color);
+  height: 100%;
+  border-radius: 20px 0 0 20px;
+  transition: width 0.5s ease-in-out;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+.container {
+  padding: 2rem;
+  max-width: 1100px;
+  margin: auto;
+  font-style: oblique;
+}
+
+#about {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: center;
+  margin-bottom: 3rem;
+  animation: fadeInUp 1s ease;
+}
+
+#about img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid var(--accent-color);
+  box-shadow: var(--shadow);
+}
+
+.filters {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.filters button {
+  margin: 0 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--accent-color);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.filters button:hover {
+  background: #008877;
+}
+
+.project-card {
+  background: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  margin-bottom: 2rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+  animation: fadeIn 1s ease;
+  font-style: oblique
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+h2 {
+  border-left: 6px solid var(--accent-color);
+  padding-left: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+form input, form textarea {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+button {
+  background: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #008877;
+}
+
+footer {
+  text-align: center;
+  background: #eee;
+  padding: 1rem;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+}
+
+.dark-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background: var(--accent-color);
+  border: none;
+  color: white;
+  padding: 0.5rem 0.7rem;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.hidden { display: none; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+body.dark {
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
+}
+
+body.dark .project-card,
+body.dark input,
+body.dark textarea {
+  background-color: #2b2b3c;
+  color: white;
+  border: 1px solid #444;
+}
+
+@media (max-width: 768px) {
+  #about {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+
+
